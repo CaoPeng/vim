@@ -8,3 +8,8 @@ Init all the vim profile(for recording)
  - mkdir **tools** directory
  - copy `ctags` `cscope` binary for use
  - add some `*.vim` files
+ 
+# update at 2015/11/13
+
+ - add `cctags.sh` to create *ctags* *cscope* auto
+ 
