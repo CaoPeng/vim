@@ -41,7 +41,7 @@ let g:miniBufExplMapWindowNavArrows=1
 "for python
 "let python_highlight_all = 1
 "for grep.vim
-nnoremap <silent> <F3> :Grep<CR>
+"nnoremap <silent> <F3> :Grep<CR>
 "for  OmniCppComplete
 let OmniCpp_NamespaceSearch=1
 let OmniCpp_GlobalScopeSearch=1
@@ -99,7 +99,7 @@ set smartindent "smart indent
 set autoindent  "打开自动个缩进
 "Map <space> to / (search) and Ctrl-<space> to ? (backwards search)
 map <space> /
-map <c-space> ?
+map <c-a> ?
 "Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
 "Returns ture if paste mode is enabled
@@ -124,7 +124,51 @@ if version >= 603
     set helplang=cn
     set encoding=utf-8
 endif
-if filereadable("cscope.out")
-    execute "cs add cscope.out"
-endif
+"map tl for :Tlist
+map tl :Tlist<cr>
+"set Tlist auto open
+"let Tlist_Auto_Open=1
+"自动关闭
+let Tlist_File_Fode_Auto_Close=1
+"一次只显示一个文件中的信息
+let Tlist_Show_One_File=1
+"设置输入焦点到taglit窗口
+let Tlist_GainFocus_On_ToggleOpen=1
+"Folder Explore
+"netrw setting
+let g:netrw_winsize=30
+"nmap <silent> <leader>fe :Sexplore!<cr>
+nmap <silent> <leader>fe :Sexplore!<cr>
+"map fe :Sexplore!<cr>
+"-- Cscope setting --
+" 2015/11/13
+"if has("cscope")
+"    set csprg=~/bin/cscope " 指定用来执行cscope的命令
+"    set csto=0 " 设置cstag命令查找次序：0先找cscope数据库再找标签文件；1先找标签文件再找cscope数据库
+"    set cst " 同时搜索cscope数据库和标签文件
+"    set cscopequickfix=s-,c-,d-,i-,t-,e- " 使用QuickFix窗口来显示cscope查找结果
+"    set nocsverb
+"    if filereadable("cscope.out") " 若当前目录下存在cscope数据库，添加该数据库到vim
+"        cs add cscope.out
+"        "elseif $CSCOPE_DB != "" " 否则只要环境变量CSCOPE_DB不为空，则添加其指定的数据库到vim
+"        "    cs add $CSCOPE_DB
+"    endif
+"    set csverb
+"endif
+nmap cs :cs help<CR>
+nmap css :cs find s <C-R>=expand("<cword>")<CR><CR>	
+nmap csg :cs find g <C-R>=expand("<cword>")<CR><CR>	
+nmap csc :cs find c <C-R>=expand("<cword>")<CR><CR>	
+nmap cst :cs find t <C-R>=expand("<cword>")<CR><CR>	
+nmap cse :cs find e <C-R>=expand("<cword>")<CR><CR>	
+nmap csf :cs find f <C-R>=expand("<cfile>")<CR><CR>	
+nmap csi :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+nmap csd :cs find d <C-R>=expand("<cword>")<CR><CR>	
 
+set timeoutlen=3000
+"map Key 'F2' to turn on/off line number
+:noremap <F2> :set nu! nu?<CR>
+"set high light when search Code
+:noremap <F3> :set hls! hls?<CR>
+autocmd InsertEnter * :set nohlsearch
+autocmd InsertLeave * :set hls

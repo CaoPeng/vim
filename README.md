@@ -12,4 +12,9 @@ Init all the vim profile(for recording)
 # update at 2015/11/13
 
  - add `cctags.sh` to create *ctags* *cscope* auto
- 
+
+# update at 2015/12/15
+
+ - fix cctags.sh
+ - sync vim profile from work server
+ - fix somoe cscope issue

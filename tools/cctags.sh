@@ -30,4 +30,7 @@ fi
 
 echo "For create ctags databases.."
 ctags -R --c++-kinds=+p --fields=+iaS --extra=+q -L ${OUT_PATH}/names.file -f ${OUT_PATH}/tags
+mv names.file cscope.files
+echo "for create cscope databases.."
+cscope -Rbq -i cscope.files
 echo "DONE!!"
