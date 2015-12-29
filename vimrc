@@ -25,7 +25,11 @@ set showmatch
 set helplang=cn
 "配色方案
 colorscheme desert
+"显示tab按键
 set list
+"显示行末空格
+highlight WhitespaceEOL ctermbg=red guibg=red
+match WhitespaceEOL /\s\+$/
 "about Tlist
 let Tlist_Show_One_File=1
 let Tlist_exit_onlyWindow=1
@@ -172,3 +176,4 @@ set timeoutlen=3000
 :noremap <F3> :set hls! hls?<CR>
 autocmd InsertEnter * :set nohlsearch
 autocmd InsertLeave * :set hls
+xnoremap p pgvy
