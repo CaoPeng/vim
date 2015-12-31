@@ -30,6 +30,10 @@ set list
 "显示行末空格
 highlight WhitespaceEOL ctermbg=red guibg=red
 match WhitespaceEOL /\s\+$/
+"显示TAB
+highlight TabKey ctermbg=green guibg=green
+match TabKey /\t/
+
 "about Tlist
 let Tlist_Show_One_File=1
 let Tlist_exit_onlyWindow=1
