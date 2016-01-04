@@ -1,20 +1,11 @@
-# vim
+# What is this?
 My working vim profiles
-# update at 2015/11/04
-Init all the vim profile(for recording)
 
-# update at 2015/11/08
 
- - mkdir **tools** directory
- - copy `ctags` `cscope` binary for use
- - add some `*.vim` files
- 
-# update at 2015/11/13
+Thanks
+=========
+* [nerdtree](https://github.com/scrooloose/nerdtree)
+* [use_vim_as_ide](https://github.com/yangyangwithgnu/use_vim_as_ide)
+* [nerdtree-git-plugin](https://github.com/Xuyuanp/nerdtree-git-plugin)
 
- - add `cctags.sh` to create *ctags* *cscope* auto
 
-# update at 2015/12/15
-
- - fix cctags.sh
- - sync vim profile from work server
- - fix somoe cscope issue
