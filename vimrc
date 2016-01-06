@@ -127,7 +127,8 @@ set scrolloff=7
 "format the status line
 set laststatus=2
 "set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
-set statusline=[%F]%y%r%m%*%=[Line:%l/%L,Column:%c][%p%%]
+"set statusline=[%F]%y%r%m%*%=[Line:%l/%L,Column:%c][%p%%]
+set statusline=%F%m%r%h%w%*%=[%p%%][%l/%L,%v][%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]%y[%{strftime(\"%Y/%m/%d-%H:%M\")}]
 if version >= 603
     set helplang=cn
     set encoding=utf-8
