@@ -31,8 +31,8 @@ set list
 highlight WhitespaceEOL ctermbg=red guibg=red
 match WhitespaceEOL /\s\+$/
 "显示TAB
-highlight TabKey ctermbg=green guibg=green
-match TabKey /\t/
+"highlight TabKey ctermbg=green guibg=green
+"match TabKey /\t/
 
 "about Tlist
 let Tlist_Show_One_File=1
