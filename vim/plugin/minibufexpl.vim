@@ -285,7 +285,7 @@ endif
 " Status Line Text for MBE window {{{
 "
 if !exists('g:miniBufExplStatusLineText')
-  let g:miniBufExplStatusLineText = "-MiniBufExplorer-"
+  let g:miniBufExplStatusLineText = "MiniBuf"
 endif
 
 " }}}

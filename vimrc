@@ -1,30 +1,21 @@
-"设置字符集
 set fenc=utf-8
-set fencs=utf-8,usc-bom,euc-jp,gb18030,gbk,gb2312,cp936
-"不使用vi的键盘模式，而是vim自己的
+"for use vim's keypad
 set nocompatible
 "history number
 set history=1000
-"在处理为保存 或  只读文件的时候  弹出确认
+"alert confirm dialog when we open a file which readonly or change
 set confirm
-"侦测文件类型
+"sinfer file type
 filetype on
-"载入文件类型插件
-filetype plugin on
-"为特定文件类型载入相关缩进
 filetype indent on
-"语法高亮
 syntax enable
 syntax on
-"设置搜索高亮
-set hls
-"设置显示行号
-"set nu
-"高亮显示匹配的括号
+"缩进配置
+set smartindent
 set showmatch
 set helplang=cn
-"配色方案
 colorscheme desert
+"colorscheme bclear
 "显示tab按键
 set list
 "显示行末空格
@@ -34,49 +25,12 @@ match WhitespaceEOL /\s\+$/
 "highlight TabKey ctermbg=green guibg=green
 "match TabKey /\t/
 
-"about Tlist
-let Tlist_Show_One_File=1
-let Tlist_exit_onlyWindow=1
-"map tl for :Tlist
-map tl :Tlist<cr>
-"about WindowManager
-let g:winManagerWindowLayout='FileExplorer|TagList'
-nmap wm :WMToggle<cr>
-"for minibufexpl.vim
-let g:miniBufExplMapCTabSwitchBufs=1
-let g:miniBufExplMapWindowsNavVim=1
-let g:miniBufExplMapWindowNavArrows=1
-"for python
-"let python_highlight_all = 1
-"for grep.vim
-"nnoremap <silent> <F3> :Grep<CR>
-"for  OmniCppComplete
-let OmniCpp_NamespaceSearch=1
-let OmniCpp_GlobalScopeSearch=1
-let OmniCpp_ShowAccess=1
-let OmniCpp_ShowPrototypeInAbbr=1 "show function parameters
-let OmniCpp_MayCompleteDot=1 "autocomplete after .
-let OmniCpp_MayCompleteArrow=1 " autocomplete after->
-let OmniCpp_MayCompleteScope=1 "autocomplete after ::
-let OmniCpp_DefaultNamespace=["std","_GLIBCXX_STD"]
-"automatically open and close the popup menu /preview Window
-au CursorMovedI,InsertLeave * if pumvisible()==0|silent! pclose|endif
-set completeopt=menuone,menu,longest,preview
-set nocp
-filetype plugin on
-"end for OmniCppComplete
-"for SuperTab
-let g:SuperTabDefaultCompletionType="context"
 set autoindent
-set tabstop=4  
-set shiftwidth=4  
-set expandtab  
-set number
-"setlocal omnifunc=javacomplete#Complete
-"autocmd FileType java set omnifunc=javacomplete#Complete
-"autocmd FileType java set completefunc=javacomplete#CompleteParamsInf
-"setlocal completefunc=javacomplete#CompleteParamsInfo
-"autocmd FileType java inoremap <buffer> . .<C-X><C-O><C-P><Down>
+"1 tab == 4 space
+set tabstop=4
+set shiftwidth=4
+set expandtab
+"set nu
 set showcmd
 "Code complete
 set completeopt=preview,menu
@@ -102,30 +56,18 @@ set smarttab
 "Linebreak on 500 characters
 set lbr
 set tw=500
-"缩进配置
-set smartindent "smart indent
-set autoindent  "打开自动个缩进
-"Map <space> to / (search) and Ctrl-<space> to ? (backwards search)
+"Map <space> to / (search) and Ctrl-<a> to ? (backwards search)
 map <space> /
 map <c-a> ?
-"Toggle paste mode on and off
-map <leader>pp :setlocal paste!<cr>
-"Returns ture if paste mode is enabled
-function! HasPaste()
-    if &paste
-        return 'PASTE MODE'
-    endif
-    return ''
-endfunction
 "highlight current line
 set cursorline
 set cursorcolumn
+"在上下移动光标时，光标上下方至少会显示的行数
+set scrolloff=7
 " => Status line
 "Always show the status line
-"在上下移动光标的时候，光标的上下方至少会保留显示的行数
-set scrolloff=7
-"format the status line
 set laststatus=2
+"format the status line
 "set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
 "set statusline=[%F]%y%r%m%*%=[Line:%l/%L,Column:%c][%p%%]
 set statusline=%F%m%r%h%w%*%=[%p%%][%l/%L,%v][%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]%y[%{strftime(\"%Y/%m/%d-%H:%M\")}]
@@ -147,7 +89,7 @@ let Tlist_GainFocus_On_ToggleOpen=1
 "netrw setting
 let g:netrw_winsize=30
 "nmap <silent> <leader>fe :Sexplore!<cr>
-nmap <silent> <leader>fe :Sexplore!<cr>
+ nmap <silent> <leader>fe :Sexplore! Sexplore?<cr>
 "map fe :Sexplore!<cr>
 "-- Cscope setting --
 " 2015/11/13
@@ -165,23 +107,26 @@ nmap <silent> <leader>fe :Sexplore!<cr>
 "    set csverb
 "endif
 nmap cs :cs help<CR>
-nmap css :cs find s <C-R>=expand("<cword>")<CR><CR>	
-nmap csg :cs find g <C-R>=expand("<cword>")<CR><CR>	
-nmap csc :cs find c <C-R>=expand("<cword>")<CR><CR>	
-nmap cst :cs find t <C-R>=expand("<cword>")<CR><CR>	
-nmap cse :cs find e <C-R>=expand("<cword>")<CR><CR>	
-nmap csf :cs find f <C-R>=expand("<cfile>")<CR><CR>	
+nmap css :cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap csg :cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap csc :cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap cst :cs find t <C-R>=expand("<cword>")<CR><CR>
+nmap cse :cs find e <C-R>=expand("<cword>")<CR><CR>
+nmap csf :cs find f <C-R>=expand("<cfile>")<CR><CR>
 nmap csi :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-nmap csd :cs find d <C-R>=expand("<cword>")<CR><CR>	
+nmap csd :cs find d <C-R>=expand("<cword>")<CR><CR>
 
 set timeoutlen=3000
 "map Key 'F2' to turn on/off line number
 :noremap <F2> :set nu! nu?<CR>
 "set high light when search Code
 :noremap <F3> :set hls! hls?<CR>
+"set paste mode
+
 autocmd InsertEnter * :set nohlsearch
 autocmd InsertLeave * :set hls
 xnoremap p pgvy
+"xnoremap y viwy
 " for NERDTreeToggle
 " use $vim / $vim . -> open NERDTree auto
 autocmd StdinReadPre * let s:std_in=1
@@ -196,7 +141,18 @@ nnoremap <C-P> :bprev<CR>
 let g:indent_guides_enable_on_vim_startup=1
 " started level
 let g:indent_guides_start_level=2
-" 
+"
 let g:indent_guides_guide_size=1
 " 快捷键 i 开/关缩进可视化
 :nmap <silent> <Leader>i <Plug>IndentGuidesToggle
+"""""""""""""""""""""""""""""""
+"" BufExplorer
+"""""""""""""""""""""""""""""""
+"let g:bufExplorerDefaultHelp=0       " Do not show default help.
+"let g:bufExplorerShowRelativePath=1  " Show relative paths.
+"let g:bufExplorerSortBy='mru'        " Sort by most recently used.
+"let g:bufExplorerSplitRight=0        " Split left.
+"let g:bufExplorerSplitVertical=1     " Split vertically.
+"let g:bufExplorerSplitVertSize = 30  " Split width
+"let g:bufExplorerUseCurrentWindow=1  " Open in new window.
+"autocmd BufWinEnter \[Buf\ List\] setl nonumber
