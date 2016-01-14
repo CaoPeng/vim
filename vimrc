@@ -63,7 +63,7 @@ map <c-a> ?
 set cursorline
 set cursorcolumn
 "在上下移动光标时，光标上下方至少会显示的行数
-set scrolloff=7
+set scrolloff=4
 " => Status line
 "Always show the status line
 set laststatus=2
@@ -137,6 +137,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 "for buftabline
 nnoremap <C-N> :bnext<CR>
 nnoremap <C-P> :bprev<CR>
+map bl :MBEToggle<cr>
 " start after vim started
 let g:indent_guides_enable_on_vim_startup=1
 " started level
@@ -145,6 +146,14 @@ let g:indent_guides_start_level=2
 let g:indent_guides_guide_size=1
 " 快捷键 i 开/关缩进可视化
 :nmap <silent> <Leader>i <Plug>IndentGuidesToggle
+" 禁止光标闪烁
+set gcr=a:block-blinkon0
+
+" 基于缩进或语法进行代码折叠
+"set foldmethod=indent
+set foldmethod=syntax
+" 启动 vim 时关闭折叠代码
+set nofoldenable
 """""""""""""""""""""""""""""""
 "" BufExplorer
 """""""""""""""""""""""""""""""
