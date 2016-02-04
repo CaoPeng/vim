@@ -70,7 +70,12 @@ set laststatus=2
 "format the status line
 "set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
 "set statusline=[%F]%y%r%m%*%=[Line:%l/%L,Column:%c][%p%%]
-set statusline=%F%m%r%h%w%*%=[%p%%][%l/%L,%v][%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]%y[%{strftime(\"%Y/%m/%d-%H:%M\")}]
+set statusline=%F%m%r%h%w%*%=
+\[%l/%L,%v]
+\%{GitBranchInfoString()}
+\[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]
+\%y[%{strftime(\"%Y/%m/%d-%H:%M\")}]
+
 if version >= 603
     set helplang=cn
     set encoding=utf-8
@@ -155,6 +160,12 @@ set foldmethod=syntax
 " 启动 vim 时关闭折叠代码
 set nofoldenable
 set t_Co=256
+
+"set statusline=%<%F%<%<%h%m%<%{GitBranchInfoString()}%r%=line=%03l,col=%02c%V,totlin=%L%\%=%-30(,BfNm=%n%Y%)\%P\*       " cool statusline
+let g:git_branch_status_text=" "
+let g:git_branch_status_head_current=1
+let g:git_branch_status_nogit=""
+"map resgrep :! grep caopeng -rn ./frameworks/base/core/java/android/
 """""""""""""""""""""""""""""""
 "" BufExplorer
 """""""""""""""""""""""""""""""
