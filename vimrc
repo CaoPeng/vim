@@ -165,6 +165,11 @@ set t_Co=256
 let g:git_branch_status_text=" "
 let g:git_branch_status_head_current=1
 let g:git_branch_status_nogit=""
+"for translate(base on YouDao online translate
+vnoremap <silent> <C-T> :<C-u>Ydv<CR>
+nnoremap <silent> <C-T> :<C-u>Ydc<CR>
+noremap <leader>yd :<C-u>Yde<CR>
+
 "map resgrep :! grep caopeng -rn ./frameworks/base/core/java/android/
 """""""""""""""""""""""""""""""
 "" BufExplorer
