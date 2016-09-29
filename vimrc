@@ -167,9 +167,12 @@ let g:git_branch_status_head_current=1
 let g:git_branch_status_nogit=""
 "for translate(base on YouDao online translate
 if has('python')
-    vnoremap <silent> <C-T> :<C-u>Ydv<CR>
-    nnoremap <silent> <C-T> :<C-u>Ydc<CR>
-    noremap <leader>yd :<C-u>Yde<CR>
+    "vnoremap <silent> <C-T> :<C-u>Ydv<CR>
+    "nnoremap <silent> <C-T> :<C-u>Ydc<CR>
+    "noremap <leader>yd :<C-u>Yde<CR>
+    nnoremap ydt :<C-u>Ydc<CR>
+    vnoremap ydt :<C-u>Ydv<CR>
+    noremap  yd  :<C-u>Yde<CR>
 endif
 
 "map resgrep :! grep caopeng -rn ./frameworks/base/core/java/android/
